@@ -1,4 +1,4 @@
-# SquirtlesAlgorithmStudyS7
+# 🐢💧 SquirtlesAlgorithmStudyS7 💧🐢
 
 
 ![‎꼬부기들7기 ‎1](https://github.com/SquirtlesAlgorithmStudy/SquirtlesAlgorithmStudyS7/assets/60493070/2ab4f942-17f0-4deb-9fa9-a7b290dd0c52)
