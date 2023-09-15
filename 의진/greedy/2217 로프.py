@@ -13,3 +13,5 @@ for rope in ropes:
     scaler -= 1
 
 print(answer)
+
+# Friday Clear

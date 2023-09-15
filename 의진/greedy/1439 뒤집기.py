@@ -11,3 +11,5 @@ for char in S:
         current_value = char
 
 print((count + 1) // 2)
+
+# Friday Clear
