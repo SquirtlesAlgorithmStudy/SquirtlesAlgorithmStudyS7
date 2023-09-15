@@ -15,3 +15,5 @@ for leak in leaks:
             if leak + i in is_fixed.keys():
                 is_fixed[leak + i] = True
 print(answer)
+
+# Friday Clear
