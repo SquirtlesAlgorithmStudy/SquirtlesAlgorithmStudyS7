@@ -13,3 +13,4 @@ for char in S:
 print((count + 1) // 2)
 
 # Friday Clear
+# Monday Clear
