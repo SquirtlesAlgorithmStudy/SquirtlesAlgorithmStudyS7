@@ -11,9 +11,6 @@ for _ in range(0,n):
 
 counterDic = Counter(arr)
 d1 = sorted(counterDic.items(),reverse=True)
-
-arr1 = list()
-
 max = 0
 count = 0
 for key,value in d1:
