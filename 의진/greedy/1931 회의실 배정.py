@@ -14,3 +14,5 @@ for confer in confers[1:]:
         last_time = confer[1]
 
 print(result)
+
+# Friday Finish
