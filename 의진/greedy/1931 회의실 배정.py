@@ -2,7 +2,7 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-confers = [tuple(map(int, input().rstrip().split())) for _ in range(n)]
+confers = [tuple(map(int, input().split())) for _ in range(n)]
 confers.sort(key=lambda x: (x[1], x[0]))
 
 result = 1

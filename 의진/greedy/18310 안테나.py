@@ -7,4 +7,4 @@ locations = list(map(int, input().split()))
 locations.sort()
 print(locations[(len(locations)-1) // 2])
 
-# Friday Finish
+# Friday Finish.
