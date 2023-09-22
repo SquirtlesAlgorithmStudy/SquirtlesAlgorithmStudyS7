@@ -1,23 +1,22 @@
 import sys
+
 N = int(input())
+meeting = []
+result = 1 # N 은 1 이상
 
-s_e_list =[]
-count =1
+for _ in range(N):
+    start, finish = list(map(int,sys.stdin.readline().split()))
+    meeting.append([start, finish])
 
-for i in range(N):
-    s, e = map(int, sys.stdin.readline().split())
-    
-    s_e_list.append([s, e])
+# meeting.sort(key=lambda x: [x[0], x[1]]) # 시간 초과 
+meeting.sort(key=lambda x: [x[1], x[0]]) # 더 빨리 끝나는 순으로 정렬
 
-s_e_list.sort(key=lambda x: [x[1], x[0]])
+pre_s, pre_f = meeting[0] # 무조건 
+for j in range(1,N):
+    post_s, post_f = meeting[j]
+    if pre_f <= post_s:
+        pre_s = post_s
+        pre_f = post_f
+        result +=1
 
-now =s_e_list.pop(0)
-while len(s_e_list):
-    
-    if (s_e_list[0][0] >= now[1]):
-        count +=1
-        now =s_e_list[0]
-
-    s_e_list.pop(0)
-
-print(count)
+print(result)
