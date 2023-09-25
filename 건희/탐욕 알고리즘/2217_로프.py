@@ -7,7 +7,7 @@ def solution(ropes):
     for i, rope in enumerate(ropes):
         weight = max(weight, rope * (n - i))
 
-    return max(weight)
+    return weight
     
 n = int(input())
 ropes = [int(input()) for _ in range(n)]

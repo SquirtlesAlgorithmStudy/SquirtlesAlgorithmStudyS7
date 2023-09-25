@@ -1,0 +1,17 @@
+# 테케만 맞는 코드
+num = int(input())
+arr = list(map(int,input().split(" ")))
+
+sum_num = sum(arr)
+avr = int(sum_num//num)
+little = 0
+large = 0
+for a in arr :
+    if a<=avr:
+        little += 1
+    else :
+        large += 1
+if little>=large:
+    print(avr)
+else:
+    print(avr + 1)
