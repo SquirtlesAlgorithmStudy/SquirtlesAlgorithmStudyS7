@@ -7,4 +7,5 @@ house_loc = list(map(int, house_loc.split(' '))) #문자열 분리 및 정수 �
 house_loc.sort() #오름차순 정렬
 print(house_loc)
 
-# print(house_loc[(house_num-1)//2])
+#중간값이 최소가 되는 위치
+print(house_loc[(house_num-1)//2]) 
