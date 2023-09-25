@@ -38,3 +38,4 @@ for item in sum_list:
     if isinstance(item, int):
         result += item
 print(result)
+#0925 변경사항 수정

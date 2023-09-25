@@ -16,3 +16,4 @@ for i in range(1, len(sorted_meetings)):
         count += 1
         meeting_end = sorted_meetings[i][1]
 print(count)
+#0925 변경사항 수정

@@ -7,3 +7,5 @@ if len(houses_list)%2 == 1:
     print(houses_list[len(houses_list)//2])
 else:
     print(houses_list[len(houses_list)//2 -1])
+
+#0925 변경사항 수정
