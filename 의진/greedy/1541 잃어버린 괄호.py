@@ -14,3 +14,4 @@ subtract_values = sum(map(get_sum, question.split("-")[1:]))
 print(add_values - subtract_values)
 
 # Friday Finish.
+# Monday Finish.

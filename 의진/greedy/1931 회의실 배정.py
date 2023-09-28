@@ -16,3 +16,4 @@ for confer in confers[1:]:
 print(result)
 
 # Friday Finish
+# Monday Finish.

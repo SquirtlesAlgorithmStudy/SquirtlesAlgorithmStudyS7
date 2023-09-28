@@ -8,3 +8,4 @@ locations.sort()
 print(locations[(len(locations)-1) // 2])
 
 # Friday Finish.
+# Monday Finish.
