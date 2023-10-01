@@ -3,6 +3,9 @@ while True:
     stack = []
     flag = True
 
+    if sentence == '.':
+        break
+
     for s in sentence:
         if s == '[' or s == '(':
             stack.append(s)
@@ -18,8 +21,5 @@ while True:
             else:
                 flag = False
                 break
-
-    if sentence == '.':
-        break
 
     print('yes' if not stack and flag else 'no')
