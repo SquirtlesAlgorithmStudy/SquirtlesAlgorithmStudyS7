@@ -1,16 +1,12 @@
-# import sys
-# import re
+import re
 
-# fastin=sys.stdin.readline().rstrip()
+fastin=[]
+while 1==1:
+    a = list(input())
+    fastin += a + ["\n"]
+    if(a == ["."]):
+        break
 
-fastin = """So when I die (the [first] I will see in (heaven) is a score list).
-[ first in ] ( first out ).
-Half Moon tonight (At least it is better than no Moon at all].
-A rope may form )( a trail in a maze.
-Help( I[m being held prisoner in a fortune cookie factory)].
-([ (([( [ ] ) ( ) (( ))] )) ]).
- .
-."""
 input_string = list(fastin)
 length = len(input_string)
 
@@ -20,7 +16,6 @@ a = 0
 b = 0
 bracket = ['(', ')','[',']',' ','.', '\n']
 
-#print(input_string)
 length = len(input_string)
 
 for i in range(1,length-1):
@@ -43,6 +38,8 @@ for i in range(1,length-1):
         elif(input_string[i]=='.'):
             if(a==0 and b==0):
                 print('yes')
+                a=0
+                b=0
             else:
                 print('no')
                 a=0
