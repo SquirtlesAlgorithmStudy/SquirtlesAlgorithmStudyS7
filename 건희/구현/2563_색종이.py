@@ -17,3 +17,10 @@ def solution(papers):
     return ret
 
 print(solution(papers))
+
+checked = set()
+for paper in papers:
+    checked = checked.union(
+    set([(i, j) for i in range(paper[0], paper[0] + 10) \
+                for j in range(paper[1], paper[1] + 10)]))
+print(len(checked))
