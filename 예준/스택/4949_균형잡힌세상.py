@@ -44,4 +44,3 @@ for i in range(1,length-1):
                 print('no')
                 a=0
                 b=0
-    
