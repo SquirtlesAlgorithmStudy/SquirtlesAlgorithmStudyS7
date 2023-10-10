@@ -1,26 +1,27 @@
-while True :
+while True:
     a = input()
     stack = []
 
-    if a == "." :
+    if a == ".":
         break
 
-    for i in a :
-        if i == '[' or i == '(' :
+    for i in a:
+        if i == '[' or i == '(':
             stack.append(i)
-        elif i == ']' :
-            if len(stack) != 0 and stack[-1] == '[' :
+        elif i == ']':
+            if len(stack) != 0 and stack[-1] == '[':
                 stack.pop()
-            else : 
+            else:
                 stack.append(']')
                 break
-        elif i == ')' :
-            if len(stack) != 0 and stack[-1] == '(' :
+        elif i == ')':
+            if len(stack) != 0 and stack[-1] == '(':
                 stack.pop()
-            else :
+            else:
                 stack.append(')')
                 break
-    if len(stack) == 0 :
+    if len(stack) == 0:
         print('yes')
-    else :
+    else:
         print('no')
+# 완료

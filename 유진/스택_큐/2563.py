@@ -11,3 +11,4 @@ for i in arr:
     ans += i.count(1)
 
 print(ans)
+# 완료
