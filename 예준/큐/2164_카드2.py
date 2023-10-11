@@ -1,5 +1,6 @@
 import sys
 fastin=sys.stdin.readline().rstrip()
+
 n = int(fastin) # N 입력받기
 
 from collections import deque
@@ -21,4 +22,4 @@ for i in range(n-1): # N-1번 시행
 # 남은 카드 번호 출력
 print(q[0])
 
-#	메모리, 시간 : 31256KB	44ms
+#	메모리, 시간 : 	51044KB	216ms

@@ -67,3 +67,5 @@ while idx < len(string):
             answer += 1
             idx += 1
 print(answer)
+
+# Friday Finish
