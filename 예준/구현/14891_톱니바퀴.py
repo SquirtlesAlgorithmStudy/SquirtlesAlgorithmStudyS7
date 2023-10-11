@@ -1,6 +1,7 @@
 gear = [list(map(int, input())) for _ in range(4)]
 num = int(input())
 arr = [[0 for j in range(2)] for i in range(num)]
+
 for k in range(num):
     arr[k][0], arr[k][1] = map(int, input().split())
 
@@ -32,23 +33,22 @@ def move(gear_num, direction):
     k = [1,1,1,1]
     k[gear_num-1] = direction
     
-    match gear_num:
-        case 1:
-            k[1] = difference[0]*k[0]*(-1)*abs(k[0])
-            k[2] = difference[1]*k[1]*(-1)*abs(k[1])            
-            k[3] = difference[2]*k[2]*(-1)*abs(k[2])
-        case 2:
-            k[0] = difference[0]*k[1]*(-1)*abs(k[1])
-            k[2] = difference[1]*k[1]*(-1)*abs(k[1])    
-            k[3] = difference[2]*k[2]*(-1)*abs(k[2])
-        case 3:   
-            k[3] = difference[2]*k[2]*(-1)*abs(k[2])
-            k[1] = difference[1]*k[2]*(-1)*abs(k[2])
-            k[0] = difference[0]*k[1]*(-1)*abs(k[1])
-        case 4:
-            k[2] = difference[2]*k[2]*(-1)*abs(k[2])
-            k[1] = difference[1]*k[2]*(-1)*abs(k[2])
-            k[0] = difference[0]*k[1]*(-1)*abs(k[1])
+    if gear_num == 1:
+        k[1] = difference[0]*k[0]*(-1)*abs(k[0])
+        k[2] = difference[1]*k[1]*(-1)*abs(k[1])            
+        k[3] = difference[2]*k[2]*(-1)*abs(k[2])
+    elif gear_num ==2:
+        k[0] = difference[0]*k[1]*(-1)*abs(k[1])
+        k[2] = difference[1]*k[1]*(-1)*abs(k[1])    
+        k[3] = difference[2]*k[2]*(-1)*abs(k[2])
+    elif gear_num ==3:
+        k[3] = difference[2]*k[2]*(-1)*abs(k[2])
+        k[1] = difference[1]*k[2]*(-1)*abs(k[2])
+        k[0] = difference[0]*k[1]*(-1)*abs(k[1])
+    elif gear_num ==4:
+        k[2] = difference[2]*k[3]*(-1)*abs(k[3])
+        k[1] = difference[1]*k[2]*(-1)*abs(k[2])
+        k[0] = difference[0]*k[1]*(-1)*abs(k[1])
     
     for i in range(4):
         gear[i]=gear_move(gear[i],k[i])
@@ -56,10 +56,10 @@ def move(gear_num, direction):
 def score():
     sum = 0
     for i in range(4):
-        sum+= gear[i][0]* (2**i)
+        sum += gear[i][0] * (2**i)
     return sum
 
 for i in range(num):
     move(arr[i][0],arr[i][1])
 
-print(score())
+print(str(score()))
