@@ -1,5 +1,4 @@
 import sys
-from copy import deepcopy
 from collections import deque
 
 input = sys.stdin.readline
@@ -9,7 +8,7 @@ for _ in range(4):
 K = int(input())
 turns = [list(map(int, input().split())) for _ in range(K)]
 
-def turn_gear(gear: deque, toward):
+def rotate_gear(gear: deque, toward):
     """기어를 회전시키는 함수"""
     if toward == 1:
         gear.appendleft(gear.pop())
@@ -21,7 +20,7 @@ for i, to in turns:
     i -= 1  # reindexing
     left, right = gears[i][l_idx], gears[i][r_idx]
     # 현재 기어 회전
-    turn_gear(gears[i], to)
+    rotate_gear(gears[i], to)
     
     # 기준 왼쪽 회전
     l_gear, cur_gear = i - 1, i
@@ -33,7 +32,7 @@ for i, to in turns:
         # 다른 극일 경우 반대로 회전
         left = gears[l_gear][l_idx]
         turn_to = -turn_to
-        turn_gear(gears[l_gear], turn_to)
+        rotate_gear(gears[l_gear], turn_to)
         l_gear -= 1
         cur_gear -= 1
     # 기준 오른쪽 회전
@@ -46,7 +45,7 @@ for i, to in turns:
         # 다른 극일 경우 반대로 회전
         right = gears[r_gear][r_idx]        
         turn_to = -turn_to
-        turn_gear(gears[r_gear], turn_to)
+        rotate_gear(gears[r_gear], turn_to)
         r_gear += 1
         cur_gear += 1
     
