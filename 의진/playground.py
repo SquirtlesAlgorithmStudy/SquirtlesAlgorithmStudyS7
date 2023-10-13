@@ -1,13 +1,16 @@
 import time
-import copy
+
+
+def sorting_rule(x):
+    return (x[1], x[0])
+
 
 start_time = time.time()
-a = "뉴진쓰"
-b = a
-a = b.replace("뉴", "유")
-print(a)
-print(b)
-finish_time = time.time()
 
-elapse_time = finish_time - start_time
+a = [(i**2, ((-1)**i)-i) for i in range(1000000)]
+a.sort(key=lambda x: (x[1], x[0]))
+# a.sort(key=sorting_rule)
+
+end_time = time.time()
+elapse_time = end_time - start_time
 print(elapse_time)
