@@ -69,8 +69,11 @@ def rotation_sequence(wheel_1_1,wheel_2_1,wheel_2_2,wheel_3_1,wheel_3_2,wheel_4_
             return new_matrix
         else:
             return new_matrix
+    return new_matrix
+        
 
 for i in range(len(simuation_info)):
+    
     wheel_number = simuation_info[i][0]
     direction = simuation_info[i][1]
     wheel_1_1 = matrix[0][2]
@@ -79,6 +82,7 @@ for i in range(len(simuation_info)):
     wheel_3_1 = matrix[2][6]
     wheel_3_2 = matrix[2][2]
     wheel_4_1= matrix[3][6]
+    
     matrix[wheel_number-1] = matrix[wheel_number-1][-direction:] + matrix[wheel_number-1][:-direction]
     matrix = rotation_sequence(wheel_1_1,wheel_2_1,wheel_2_2,wheel_3_1,wheel_3_2,wheel_4_1,matrix,wheel_number,direction)
     
