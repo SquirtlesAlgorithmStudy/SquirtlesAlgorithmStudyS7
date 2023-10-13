@@ -11,6 +11,11 @@ for e in expression :
     if e == "-":
         if isFoundMinus:
             minus_nums.append(int(num))
+            print(num)
+            print("num:",num)
+            print(f"num={num}")
+            num = ""
+            
         else:
             isFoundMinus = True
             add_nums.append(int(num))
