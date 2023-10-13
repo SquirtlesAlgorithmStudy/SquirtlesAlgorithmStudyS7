@@ -1,87 +1,66 @@
-import copy
-import sys
+from sys import stdin
 
-matrix = [list(map(int, sys.stdin.readline().strip())) for _ in range(4)]
+R, C = map(int, stdin.readline().split())
 
-rotations = int(sys.stdin.readline())
+matrix = [list(input()) for _ in range(R)]
 
-simuation_info = []
-
-for i in range(rotations):
-    simuation_info.append(list(map(int, sys.stdin.readline().split())))
-
-
-def rotation_sequence(wheel_1_1,wheel_2_1,wheel_2_2,wheel_3_1,wheel_3_2,wheel_4_1,matrix,wheel_number,direction):
-    new_matrix = copy.deepcopy(matrix)
+def count_adjacent(matrix, row, column):
+    adjacent_count = []
     
-    if wheel_number == 1:
-
-        if wheel_1_1 != wheel_2_1:
-            new_matrix[1] = matrix[1][direction:] + matrix[1][:direction]
-        else:
-            return new_matrix  
-        if wheel_2_2 != wheel_3_1:
-            new_matrix[2] = matrix[2][-direction:] + matrix[2][:-direction]
-        else:
-            return new_matrix 
-        if wheel_3_2 != wheel_4_1:
-            new_matrix[3] = matrix[3][direction:] + matrix[3][:direction]
-            return new_matrix
-        else:
-            return new_matrix 
-
-        
-    elif wheel_number == 2:
-
-        if wheel_1_1 != wheel_2_1:
-            new_matrix[0] = matrix[0][direction:] + matrix[0][:direction]
-        if wheel_2_2 != wheel_3_1:
-            new_matrix[2] = matrix[2][direction:] + matrix[2][:direction]
-        else:
-            return new_matrix
-        if wheel_3_2 != wheel_4_1:
-            new_matrix[3] = matrix[3][-direction:] + matrix[3][:-direction]
-        else:
-            return new_matrix
-    elif wheel_number == 3:
-        
-        if wheel_3_2 != wheel_4_1:
-            new_matrix[3] = matrix[3][direction:] + matrix[3][:direction]
-        if wheel_3_1 != wheel_2_2:
-            new_matrix[1] = matrix[1][direction:] + matrix[1][:direction]
-        else:
-            return new_matrix
-        if wheel_2_1 != wheel_1_1:
-            new_matrix[0] = matrix[0][-direction:] + matrix[0][:-direction]
-        else:
-            return new_matrix       
-    else:
-        if wheel_3_2 != wheel_4_1:
-            new_matrix[2] = matrix[2][direction:] + matrix[2][:direction]
-        else:
-            return new_matrix
-        if wheel_2_2 != wheel_3_1:
-            new_matrix[1] = matrix[1][-direction:] + matrix[1][:-direction]
-        else:
-            return new_matrix
-        if wheel_1_1 != wheel_2_1:
-            new_matrix[0] = matrix[0][direction:] + matrix[0][:direction]
-            return new_matrix
-        else:
-            return new_matrix
-
-for i in range(len(simuation_info)):
-    wheel_number = simuation_info[i][0]
-    direction = simuation_info[i][1]
-    wheel_1_1 = matrix[0][2]
-    wheel_2_1 = matrix[1][6]
-    wheel_2_2 = matrix[1][2]
-    wheel_3_1 = matrix[2][6]
-    wheel_3_2 = matrix[2][2]
-    wheel_4_1= matrix[3][6]
-    matrix[wheel_number-1] = matrix[wheel_number-1][-direction:] + matrix[wheel_number-1][:-direction]
-    matrix = rotation_sequence(wheel_1_1,wheel_2_1,wheel_2_2,wheel_3_1,wheel_3_2,wheel_4_1,matrix,wheel_number,direction)
+    # 위쪽 원소
+    try:
+        adjacent_count.append(matrix[row-1][column])
+    except IndexError:
+        adjacent_count.append('.')
     
-result = matrix[0][0]*1+matrix[1][0]*2+matrix[2][0]*4+matrix[3][0]*8
+    # 아래쪽 원소
+    try:
+        adjacent_count.append(matrix[row+1][column])
+    except IndexError:
+        adjacent_count.append('.')
+    
+    # 왼쪽 원소
+    try:
+        adjacent_count.append(matrix[row][column-1])
+    except IndexError:
+        adjacent_count.append('.')
+    
+    # 오른쪽 원소
+    try:
+        adjacent_count.append(matrix[row][column+1])
+    except IndexError:
+        adjacent_count.append('.')
+    
+    return adjacent_count
 
-print(result)
+def make_map(output_list):
+    map_info = []
+    for row in range(len(output_list)):
+        if output_list[row].count('.') == len(output_list[0]):
+            continue
+        else:
+            first_index = output_list[row].index('X')
+            last_index = len(output_list[0]) - output_list[row][::-1].index('X') - 1
+            map_info.append([row,first_index,last_index])
+    return map_info
+
+output_list = [[0] * C for _ in range(R)]
+
+for row in range(len(matrix)):
+    for column in range(len(matrix[0])):
+        if matrix[row][column] == 'X':
+            if count_adjacent(matrix, row, column).count('X') >=2:
+                output_list[row][column] = 'X'
+            else:
+                output_list[row][column] = '.'
+        else:
+            output_list[row][column] = '.'
+
+
+future_map = make_map(output_list)
+
+if future_map == []:
+    print('[]')
+else:
+    for row in range(future_map[0][0],future_map[-1][0]+1):
+        print(output_list[row][min([row[1] for row in future_map]):max([row[2] for row in future_map])+1])
