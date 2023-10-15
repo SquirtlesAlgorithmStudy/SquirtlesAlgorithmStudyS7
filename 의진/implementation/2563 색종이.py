@@ -10,3 +10,4 @@ for colored_paper in colored_papers:
         board[row][colored_paper[0]: colored_paper[0] + 10] = [1] * 10
 
 print(sum([board[i].count(1) for i in range(len(board))]))
+# Finish

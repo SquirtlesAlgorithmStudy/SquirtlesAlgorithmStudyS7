@@ -27,4 +27,4 @@ while True:
 
     print("yes") if is_passed else print("no")
 
-# Friday Finish
+# Finish
