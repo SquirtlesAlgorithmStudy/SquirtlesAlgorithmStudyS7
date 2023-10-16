@@ -19,6 +19,3 @@ def solution(cards):
     return cards[0]
 
 print(solution(cards))
-for i in range(2, 11):
-    cards = [i for i in range(1, i)]
-    print(i - 1, solution(cards))
