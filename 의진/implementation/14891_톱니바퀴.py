@@ -55,4 +55,4 @@ for i, gear_state in enumerate(gear_states[1:]):
     score += (2 ** i) * int(gear_state[0])
 print(score)
 
-# Finish
+# Finish!

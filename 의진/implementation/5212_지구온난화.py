@@ -48,4 +48,4 @@ for row in number_representation:
         result += ("." * (row[-1] - right_min))
         print(result)
 
-# Finish
+# Finish!

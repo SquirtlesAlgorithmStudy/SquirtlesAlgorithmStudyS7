@@ -16,8 +16,8 @@ def recursive_function(n):
     print(tap*n+question) # 질문
     
     if n == N: # N 번째에
-        print(tap*n+answer) # 질문
-        print(tap*n+last_sentence) # 답변 
+        print(tap*n+answer) # 답변
+        print(tap*n+last_sentence) # 마무리 문장 출력 
         return 1
     
     print(tap*n+story_1) # 이야기 출력
