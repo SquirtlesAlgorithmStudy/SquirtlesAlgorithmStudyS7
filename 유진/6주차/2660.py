@@ -11,7 +11,7 @@ def bfs(start):
                 visited[v] = dist+1
 
 def get_max_dist():
-    max_dist = float('-inf')
+    max_dist = 0
     for dist in visited:
         if dist > max_dist:
             max_dist = dist
