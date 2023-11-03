@@ -1,12 +1,10 @@
 import sys
 from collections import deque
-import copy
 
 input = sys.stdin.readline
 
 N, L, R = map(int, input().split())
 countries = [list(map(int, input().split())) for _ in range(N)]
-prev_countries = copy.deepcopy(countries)
 
 dx = [1, 0, -1, 0]
 dy = [0, 1, 0, -1]
@@ -16,7 +14,7 @@ def bfs(x, y):
     queue = deque([[x, y]])
     associations = [[x, y]]
     # 방문한 나라의 인구 수 합과 나라의 수를 저장할 변수
-    total_population = prev_countries[y][x]
+    total_population = countries[y][x]
     cnt_country = 1
     while queue:
         x, y = queue.popleft()
@@ -26,12 +24,12 @@ def bfs(x, y):
             if (nx < 0 or nx >= N) or (ny < 0 or ny >= N) or visited[ny][nx] == 1:
                 continue
             
-            diff = abs(prev_countries[y][x] - prev_countries[ny][nx])
+            diff = abs(countries[y][x] - countries[ny][nx])
             if diff >= L and diff <= R:
                 visited[ny][nx] = 1
                 queue.append([nx, ny])
                 associations.append([nx, ny])
-                total_population += prev_countries[ny][nx]
+                total_population += countries[ny][nx]
                 cnt_country += 1
                 
     if len(associations) > 1:
@@ -54,7 +52,6 @@ while True:
     if not is_move:
         break
 
-    prev_countries = copy.deepcopy(countries)
     days += 1
 
 print(days)
