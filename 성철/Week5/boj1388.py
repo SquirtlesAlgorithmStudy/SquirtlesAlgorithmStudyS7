@@ -12,11 +12,13 @@ def dfs(x,y):
         return
     visited[x][y] = True
     if graph[x][y] == '-':
+        # '-' 인 경우 가로로 탐색을 진행
         if y+1 < m and graph[x][y+1] == '-':
             dfs(x, y+1)
         else:
             cnt += 1
     else: # graph[x][y] == '|'
+        # '|' 인 경우 세로로 탐색을 진행
         if x+1< n and graph[x+1][y] == '|':
             dfs(x+1,y)
         else:
