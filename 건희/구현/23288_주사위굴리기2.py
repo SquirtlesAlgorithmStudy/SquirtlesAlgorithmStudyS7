@@ -49,51 +49,6 @@ class Dice:
 
 dx = [1, 0, -1, 0]
 dy = [0, 1, 0, -1]
-def dfs(x, y, num):
-    cnt = 1
-    visited[y][x] = 1
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        
-        if (nx >= 0 and nx < M) and (ny >= 0 and ny < N) \
-            and board[ny][nx] == num and visited[ny][nx] == 0:
-                cnt += dfs(nx, ny, num)
-    return cnt
-
-# dice = Dice()
-# x, y = 0, 0
-# direction = 0
-# score = 0
-# for _ in range(K):
-#     # 방향 조정
-#     nx = x + dx[direction]
-#     ny = y + dy[direction]
-#     if (nx < 0 or nx >= M) or (ny < 0 or ny >= N):
-#         direction = (direction + 2) % 4
-#         nx = x + dx[direction]
-#         ny = y + dy[direction]
-
-#     # 현재 보드판에서 점수 얻기
-#     visited = [[0] * M for _ in range(N)]
-#     num = board[ny][nx]
-#     score += num * dfs(nx, ny, num)
-
-#     # 주사위 회전
-#     dice.rotate(direction)
-#     bottom = dice.get_bottom()
-
-#     # 다음 이동 방향 결정
-#     if bottom > num:
-#         direction += 1
-#     elif bottom < num:
-#         direction -= 1
-#     direction %= 4
-#     x, y = nx, ny
-
-# print(score)
-
-
 # 미리 모든 보드의 점수를 계산해두는 방법
 from collections import deque
 
@@ -153,3 +108,48 @@ for _ in range(K):
     x, y = nx, ny
 
 print(score)
+
+# 이동별 점수를 계산하는 방식
+# def dfs(x, y, num):
+#     cnt = 1
+#     visited[y][x] = 1
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+        
+#         if (nx >= 0 and nx < M) and (ny >= 0 and ny < N) \
+#             and board[ny][nx] == num and visited[ny][nx] == 0:
+#                 cnt += dfs(nx, ny, num)
+#     return cnt
+
+# dice = Dice()
+# x, y = 0, 0
+# direction = 0
+# score = 0
+# for _ in range(K):
+#     # 방향 조정
+#     nx = x + dx[direction]
+#     ny = y + dy[direction]
+#     if (nx < 0 or nx >= M) or (ny < 0 or ny >= N):
+#         direction = (direction + 2) % 4
+#         nx = x + dx[direction]
+#         ny = y + dy[direction]
+
+#     # 현재 보드판에서 점수 얻기
+#     visited = [[0] * M for _ in range(N)]
+#     num = board[ny][nx]
+#     score += num * dfs(nx, ny, num)
+
+#     # 주사위 회전
+#     dice.rotate(direction)
+#     bottom = dice.get_bottom()
+
+#     # 다음 이동 방향 결정
+#     if bottom > num:
+#         direction += 1
+#     elif bottom < num:
+#         direction -= 1
+#     direction %= 4
+#     x, y = nx, ny
+
+# print(score)
