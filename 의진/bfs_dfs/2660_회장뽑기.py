@@ -39,3 +39,5 @@ for i, score in enumerate(score_list):
         candidate.append(i)
 print(min_score, len(candidate))
 print(" ".join(map(str, candidate)))
+
+# for issue

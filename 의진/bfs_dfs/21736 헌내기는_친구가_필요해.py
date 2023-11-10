@@ -34,3 +34,5 @@ for i in range(N):
         if board[i][j] == "I":
             print(bfs(i, j))
             break
+
+# for issue
