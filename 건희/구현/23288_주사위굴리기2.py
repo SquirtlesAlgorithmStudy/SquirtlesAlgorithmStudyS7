@@ -53,6 +53,7 @@ dy = [0, 1, 0, -1]
 from collections import deque
 
 def bfs(x, y, num):
+    visited[y][x] = 1
     queue = deque([[x, y]])
     connected = [[x, y]]
     cnt = 1
@@ -72,11 +73,6 @@ def bfs(x, y, num):
         visited[y][x] = cnt
                 
 visited = [[0] * M for _ in range(N)]
-for i in range(N):
-    for j in range(M):
-        if visited[i][j] == 0:
-            visited[i][j] = 1
-            bfs(j, i, board[i][j])
 
 dice = Dice()
 x, y = 0, 0
@@ -90,11 +86,12 @@ for _ in range(K):
         direction = (direction + 2) % 4
         nx = x + dx[direction]
         ny = y + dy[direction]
-
-    # 현재 보드판에서 점수 얻기
+    
     num = board[ny][nx]
+    if visited[ny][nx] == 0:
+        bfs(nx, ny, num)
     score += num * visited[ny][nx]
-
+        
     # 주사위 회전
     dice.rotate(direction)
     bottom = dice.get_bottom()
