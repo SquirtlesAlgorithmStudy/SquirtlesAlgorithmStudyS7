@@ -14,14 +14,17 @@ input = sys.stdin.readline
 
 sys.setrecursionlimit(1000000)
 
+# 대각선 이동
 dx = [-1,1,0,0,-1,1,-1,1]
 dy = [0,0,-1,1,-1,1,1,-1]
+
 def dfs(x, y, god, index):
     global cnt
     for i in range(8):
         nx = x + dx[i]
         ny = y + dy[i]
 
+        # 환형 규칙 적용
         if nx == -1:
             nx = N-1
         if ny == -1:
@@ -31,11 +34,12 @@ def dfs(x, y, god, index):
         if ny == M:
             ny = 0
 
+        # 주어진 문자열의 끝에 도달했을 경우 return
         if index == len(god)-1:
             cnt += 1
             return
         else:
-            
+            # 주어진 문자열과 일치하는 경우 재귀함수 실행
             if graph[nx][ny] == god[index+1]:
                 dfs(nx, ny, god, index+1)
 
@@ -51,7 +55,7 @@ for _ in range(K):
     god = list(input().rstrip())
     god_str = ''.join(god)
     cnt = 0
-    if god_str in answer:
+    if god_str in answer: # 문자열이 중복으로 주어지는 경우 시간 단축을 위해서 딕셔너리에 문자열과 경우의 수를 저장
         print(answer[god_str])
     else:
         for i in range(N):
