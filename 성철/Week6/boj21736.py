@@ -10,8 +10,9 @@ sys.setrecursionlimit(1000000)
 
 input = sys.stdin.readline
 
-dx = [-1,1,0,0]
-dy = [0,0,-1,1]
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
 
 def dfs(x, y):
     global ans
@@ -41,8 +42,9 @@ visited = [[0] * M for _ in range(N)]
 for i in range(N):
     for j in range(M):
         if graph[i][j] == 'I':
-            dfs(i,j)
+            dfs(i, j)
 
 if ans == 0:
     print('TT')
-else: print(ans)
+else:
+    print(ans)

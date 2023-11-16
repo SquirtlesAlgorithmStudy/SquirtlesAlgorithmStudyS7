@@ -55,3 +55,5 @@ while True:
     snake["head"][1] = nc
 
     board[nr][nc] = 2
+
+# for issue
