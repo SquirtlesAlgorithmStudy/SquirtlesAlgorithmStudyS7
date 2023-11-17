@@ -48,6 +48,7 @@ while True:   # 인구 이동이 없을 때까지 반복
     # 맨 처음 나라부터 하씩 방문하여 bfs진행
     for i in range(n):
         for j in range(n):
+            print(visit)
             if not visit[i][j]:
                 if bfs(i, j) > 1:
                     flag = True
