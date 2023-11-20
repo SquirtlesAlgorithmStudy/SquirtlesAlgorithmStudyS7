@@ -7,6 +7,12 @@ dy = [1, 0, -1, 0]
 # 이거 쓰면 틀렸다고 나옴 왜 그러지??
 # dx = [0, 0, -1, 1]
 # dy = [1, -1, 0, 0]
+# if dice[5] > graph[row][column]:
+#         dir = (dir + 1) % 4
+#     elif dice[5] < graph[row][column]:
+#         dir = (dir + 3) % 4
+# 이 부분에서 시계, 반시계 방향이 다르게 정의되어있어서 오류가 발생한다고 한다!!!
+
 dice = [1, 2, 3, 4, 5, 6]
 row, column = 0,0
 result = 0
