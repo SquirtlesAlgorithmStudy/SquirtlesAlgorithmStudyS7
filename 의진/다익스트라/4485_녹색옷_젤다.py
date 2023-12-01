@@ -44,3 +44,5 @@ while True:
     result = dijkstra(0, 0, N-1, N-1)
     print(f"Problem {t}: {result}")
     t += 1
+
+    

@@ -16,3 +16,5 @@ for i in range(1, N):
 
 
 print(min(dp[N-1]))
+
+
